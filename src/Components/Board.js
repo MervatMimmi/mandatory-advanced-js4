@@ -11,13 +11,13 @@ const styles = {
         textAlign: 'center'
     },
     button: {
-        backgroundColor: '#4a92a966',
+        backgroundColor: 'rgba(66, 130, 151, 0.4)',
         margin: '0 auto',
         marginTop: '70px',
         display: 'flex',
         maxWidth: '434px',
         padding: '10px 30px 10px 30px',
-        borderRradius: '4px',
+        borderRadius: '10px',
         boxShadow:'1px 1px 60px 0px #00000021',
         cursor: 'pointer',
     }
@@ -26,22 +26,22 @@ const styles = {
 export default function Board() {
 
     const [state, dispatch] = useReducer( reducer, null, initState);
+    //console.log(state);
 
-    console.log(state);
-
-    const {grid} = state;
+    const {grid, infoMsg} = state;
     
     return(
         <div style = {styles.window} >
             <h1>Connect Four</h1>
+            <h3>{infoMsg}</h3>
             <table>
                 <Grid 
                     grid = {grid}
-                    onClickCell = {(rowId, cellId)=> dispatch(actions.fillCell(rowId,cellId))}
+                    onClickCell = {(columnId, cellId)=> dispatch(actions.fillCell(columnId,cellId))}
                 />
             </table>
             <button style = {styles.button}
-                    onClick = {() => dispatch(actions.clearGame())}>
+                    onClick = {() => dispatch(actions.reset())}>
                 New Game
             </button>
         </div>

@@ -2,16 +2,17 @@ import React  from 'react';
 
 const styles = {
     container:{
-        backgroundColor: '#4a92a966',
+        backgroundColor: 'rgba(66, 130, 151, 0.4)',
         margin: '0 auto',
-        marginTop: '70px',
+        marginTop: '30px',
+        boarderTop: '40px',
         display: 'flex',
         maxWidth: '434px',
         padding: '10px 30px 10px 30px',
-        borderRradius: '4px',
+        borderRadius: '10px',
         boxShadow:'1px 1px 60px 0px #00000021',
     },
-    row: {
+    column: {
         flexGrow: '1',
     },
     cell: {
@@ -26,20 +27,17 @@ const styles = {
 };
 
 
-
 export default function Grid({grid, onClickCell}) {
-
     return(
         <tbody 
         style = {styles.container}>
-            {grid.map((row, rowId) => (
-            <tr key = {rowId} 
-                style = {{ ...styles.row, backgroundColor: row}}> 
-                    {row.map((cell, cellId) => (
+            {grid.map((column, columnId) => (
+            <tr key = {columnId} 
+                style = {{ ...styles.column, backgroundColor: column}}> 
+                    {column.map((cell, cellId) => (
                         <td key = {cellId} 
                             style = {{...styles.cell, backgroundColor: cell}}
-                            onClick = {() => onClickCell(rowId, cellId)}
-                            >
+                            onClick = {() => onClickCell(columnId, cellId)}>
                         </td>))}
             </tr>
             ))}

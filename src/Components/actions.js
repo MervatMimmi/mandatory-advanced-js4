@@ -1,13 +1,13 @@
-export function fillCell(rowId, cellId) {
+export function fillCell(columnId, cellId) {
     return{
         type: 'fill_cell',
         cellId,
-        rowId,
+        columnId,
     };
 }
 
-export function clearGame() {
+export function reset() {
     return {
-        type: 'clear_game'
+        type: 'reset'
     };
 }
