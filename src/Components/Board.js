@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import {Helmet} from 'react-helmet-async';
 import Grid from './Grid';
 import reducer from './reducer';
 import * as actions from './actions';
@@ -31,19 +32,26 @@ export default function Board() {
     const {grid, infoMsg} = state;
     
     return(
-        <div style = {styles.window} >
-            <h1>Connect Four</h1>
-            <h3>{infoMsg}</h3>
-            <table>
-                <Grid 
-                    grid = {grid}
-                    onClickCell = {(columnId, cellId)=> dispatch(actions.fillCell(columnId,cellId))}
-                />
-            </table>
-            <button style = {styles.button}
-                    onClick = {() => dispatch(actions.reset())}>
-                New Game
-            </button>
+        <div>
+            <div className = 'title'>
+                <Helmet>
+                    <title>Home</title>
+                </Helmet>
+            </div>
+            <div style = {styles.window}>
+                <h1>Connect Four</h1>
+                <h3>{infoMsg}</h3>
+                <table>
+                    <Grid 
+                        grid = {grid}
+                        onClickCell = {(columnId, cellId)=> dispatch(actions.fillCell(columnId,cellId))}
+                    />
+                </table>
+                <button style = {styles.button}
+                        onClick = {() => dispatch(actions.reset())}>
+                    New Game
+                </button>
+            </div>
         </div>
     );
 }
