@@ -34,12 +34,12 @@ export function winCondition(grid, cellColor) {
         for(let cell of column) {
             if(cell === cellColor) {
                 selectedColor++;
-                //console.log("red in row: "+selectedColor);  
+                //console.log("color in row: "+selectedColor);  
                 }else{
                     selectedColor = 0;
                 }
             if(selectedColor === 4) {
-                console.log('selectedColor: '+selectedColor);
+                //console.log('selectedColor: '+selectedColor);
                 return true;
             }
         }
@@ -50,7 +50,7 @@ export function winCondition(grid, cellColor) {
             for(let column of grid) {
                 if(column[columnCell] === cellColor) {
                     selectedColor++;
-                    //console.log("red in row: "+selectedColor);  
+                    //console.log("color in row: "+selectedColor);  
                     }else{
                         selectedColor = 0;
                     }

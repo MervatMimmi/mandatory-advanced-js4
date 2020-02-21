@@ -5,9 +5,8 @@ export default function reducer(state, action) {
         case 'fill_cell':
             const newGrid = [...state.grid];
             newGrid[action.columnId] = newGrid[action.columnId].slice(0);
-            //console.log(newGrid[action.rowId]);
+            //console.log(newGrid[action.columnId]);
             const emptyCell = newGrid[action.columnId].filter((cell) => {
-            //console.log(cell);
             return cell === 'white';
             });
             if(state.winCondition || emptyCell.length === 0) {
@@ -16,7 +15,6 @@ export default function reducer(state, action) {
             newGrid[action.columnId][emptyCell.length -1] = state.selectedPlayer;
 
             if(winCondition(newGrid, 'aqua')) {
-                console.log("Aqua is the Winner");
                 return {
                 ...state,
                 grid: newGrid,
@@ -24,7 +22,6 @@ export default function reducer(state, action) {
                 infoMsg:'Congratulations Aqua, you won!',
                 }
             } else if(winCondition(newGrid, 'yellow')) {
-                console.log("Yellow is the winner");
                 return {
                 ...state,
                 grid: newGrid,
